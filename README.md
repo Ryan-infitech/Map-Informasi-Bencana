@@ -27,3 +27,34 @@ Proyek ini dirancang untuk memvisualisasikan data bencana alam secara real-time 
 ![Vercel](https://img.shields.io/badge/-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)  
 ![Leaflet.js](https://img.shields.io/badge/-Leaflet.js-199900?style=for-the-badge&logo=leaflet&logoColor=white)  
 ![Tailwind CSS](https://img.shields.io/badge/-TailwindCSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+
+## Instalasi dan Konfigurasi
+
+1. **Clone repositori:**
+   ```bash
+   git clone https://github.com/username/project-name.git
+   cd project-name
+   ```
+
+2. **Instalasi dependensi:**
+   ```bash
+   npm install
+   ```
+
+3. **Konfigurasi file `.env`:**
+   Buat file `.env` di root proyek dan masukkan variabel-variabel berikut:
+   ```env
+   REACT_APP_BMKG_API_KEY=your-api-key
+   REACT_APP_AWS_ACCESS_KEY_ID=your-aws-access-key
+   REACT_APP_AWS_SECRET_ACCESS_KEY=your-aws-secret-key
+   ```
+
+4. **Menjalankan aplikasi lokal:**
+   ```bash
+   npm run dev
+   ```
+
+5. **Deployment ke Vercel:**
+   - Hubungkan repositori ke akun Vercel.
+   - Atur variabel lingkungan yang sama pada pengaturan proyek di Vercel.
+   - Lakukan deployment melalui dashboard Vercel.
