@@ -24,8 +24,7 @@ Proyek ini dirancang untuk memvisualisasikan data bencana alam secara real-time 
 
 
 ## Teknologi yang Digunakan
-![](https://miro.medium.com/v2/resize:fit:1400/1*scIPeOF3jlDkTKDYrwElfg.gif
-)  
+![](./readmemedia/vite+react.gif)  
 ![AWS](./readmemedia/aws.gif)  ![Vercel](./readmemedia/vercel.gif)  ![Leaflet.js](./readmemedia/leaflet.gif)  ![Tailwind CSS](./readmemedia/tailwind.gif)
 
 
