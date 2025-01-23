@@ -75,3 +75,33 @@ Proyek ini dirancang untuk memvisualisasikan data bencana alam secara real-time 
 
 ### Filter Jenis Bencana
 ![](./readmemedia/ssdarkmode.png)
+
+## Rencana Pengembangan
+
+1. Penambahan fitur notifikasi peringatan dini.  
+2. Integrasi dengan data historis untuk analisis jangka panjang.  
+3. Optimalisasi untuk wilayah dengan koneksi internet rendah.  
+4. Penambahan fitur personalisasi pengguna.  
+5. Pengembangan laporan berbasis data untuk pengambil kebijakan.
+
+
+## Kontribusi
+
+Kontribusi dalam bentuk kode, ide, atau saran sangat diterima!  
+1. Fork repositori ini.  
+2. Buat branch untuk fitur baru.  
+3. Commit perubahan Anda.  
+4. Push ke branch Anda.  
+5. Buat Pull Request.  
+
+
+## Lisensi
+
+Proyek ini dilindungi oleh lisensi MIT. Silakan cek file `LICENSE` untuk informasi lebih lanjut.
+
+
+## Kontak
+
+Jika ada pertanyaan atau masukan, silakan hubungi:  
+[![WhatsApp](https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/628XXXXXXXXX)  
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:your-email@example.com)
