@@ -58,3 +58,12 @@ Proyek ini dirancang untuk memvisualisasikan data bencana alam secara real-time 
    - Hubungkan repositori ke akun Vercel.
    - Atur variabel lingkungan yang sama pada pengaturan proyek di Vercel.
    - Lakukan deployment melalui dashboard Vercel.
+
+
+## Cara Penggunaan
+
+1. **Akses Website**: Buka [website](https://zekia-map-bencana-indonesia.vercel.app/) melalui browser.  
+2. **Eksplorasi Peta**: Gunakan fitur zoom dan drag untuk menjelajahi lokasi bencana di seluruh Indonesia.  
+3. **Klik Ikon Bencana**: Dapatkan detail informasi seperti jenis bencana, lokasi, waktu, dan tingkat keparahan.  
+4. **Gunakan Filter**: Pilih jenis bencana tertentu melalui tombol di sisi kanan layar.  
+5. **Mode Tampilan**: Ubah mode terang/gelap melalui tombol di sudut kanan atas.
