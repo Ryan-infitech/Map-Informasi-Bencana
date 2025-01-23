@@ -1,36 +1,38 @@
-import React, { useState, useEffect } from 'react';
-import Map from './components/Map';
-import DisasterDetails from './components/DisasterDetails';
-import FilterBar from './components/FilterBar';
-import LoadingSpinner from './components/LoadingSpinner';
-import ErrorBoundary from './components/ErrorBoundary';
-import { Disaster, DisasterType } from './types/disaster';
-import { AlertOctagon, Moon, Sun } from 'lucide-react';
-import { fetchDisasters } from './services/api';
+//App.tsx
+import React, { useState, useEffect } from "react";
+import Map from "./components/Map";
+import DisasterDetails from "./components/DisasterDetails";
+import LoadingSpinner from "./components/LoadingSpinner";
+import ErrorBoundary from "./components/ErrorBoundary";
+import { Disaster, DisasterType } from "./types/disaster";
+import { AlertOctagon, Moon, Sun } from "lucide-react";
+import { fetchDisasters } from "./services/api";
 
 function App() {
-  const [selectedDisaster, setSelectedDisaster] = useState<Disaster | null>(null);
+  const [selectedDisaster, setSelectedDisaster] = useState<Disaster | null>(
+    null
+  );
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   const [disasters, setDisasters] = useState<Disaster[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isDarkMode, setIsDarkMode] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (typeof window !== "undefined") {
+      return window.matchMedia("(prefers-color-scheme: dark)").matches;
     }
     return false;
   });
 
   useEffect(() => {
     if (isDarkMode) {
-      document.documentElement.classList.add('dark');
+      document.documentElement.classList.add("dark");
     } else {
-      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.remove("dark");
     }
   }, [isDarkMode]);
 
   const loadDisasters = async (filters?: {
-    type?: DisasterType | 'all';
+    type?: DisasterType | "all";
     searchQuery?: string;
     startDate?: string;
     endDate?: string;
@@ -42,7 +44,9 @@ function App() {
       const data = await fetchDisasters(filters);
       setDisasters(data);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to fetch disasters');
+      setError(
+        err instanceof Error ? err.message : "Failed to fetch disasters"
+      );
     } finally {
       setLoading(false);
     }
@@ -64,14 +68,14 @@ function App() {
     endDate,
     severity,
   }: {
-    type: DisasterType | 'all';
+    type: DisasterType | "all";
     searchQuery: string;
     startDate?: string;
     endDate?: string;
     severity?: string;
   }) => {
     loadDisasters({
-      type: type === 'all' ? undefined : type,
+      type: type === "all" ? undefined : type,
       searchQuery,
       startDate,
       endDate,
@@ -82,13 +86,17 @@ function App() {
   return (
     <ErrorBoundary>
       {/* Add bg-white dark:bg-gray-900 to the root div for full dark mode coverage */}
-      <div className={`flex flex-col h-screen bg-white dark:bg-gray-900 ${isDarkMode ? 'dark' : ''}`}>
+      <div
+        className={`flex flex-col h-screen bg-white dark:bg-gray-900 ${
+          isDarkMode ? "dark" : ""
+        }`}
+      >
         <header className="bg-white dark:bg-gray-800 shadow-md p-4">
           <div className="container mx-auto flex items-center justify-between">
             <div className="flex items-center gap-2">
               <AlertOctagon className="h-8 w-8 text-red-600 dark:text-red-400" />
               <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-                Pemantau Bencana Indonesia
+                Pantau Bencana Indonesia
               </h1>
             </div>
             <button
@@ -106,8 +114,6 @@ function App() {
 
         {/* Add dark:bg-gray-900 to the container div */}
         <div className="container mx-auto p-4 flex-1 flex flex-col gap-4 bg-white dark:bg-gray-900">
-          <FilterBar onFilterChange={handleFilterChange} isDarkMode={isDarkMode} />
-          
           {/* Update the map container's background */}
           <div className="flex-1 relative bg-white dark:bg-gray-900">
             {loading ? (
@@ -127,8 +133,8 @@ function App() {
               </div>
             ) : (
               <div className="h-full rounded-lg overflow-hidden bg-white dark:bg-gray-900">
-                <Map 
-                  disasters={disasters} 
+                <Map
+                  disasters={disasters}
                   onMarkerClick={handleMarkerClick}
                   isDarkMode={isDarkMode}
                 />

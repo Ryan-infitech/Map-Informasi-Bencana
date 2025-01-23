@@ -1,16 +1,16 @@
+import React, { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { Icon, divIcon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { Disaster } from '../types/disaster';
-import { AlertTriangle, Droplets, Mountain, Waves, Flame, Wind, CloudRain, Brush, HelpCircle } from 'lucide-react';
 import { renderToString } from 'react-dom/server';
+import { AlertTriangle, AudioWaveform,Pickaxe,ThermometerSun, Droplets,Mountain, MountainSnow, Waves, Flame, Wind, CloudLightning, Brush, HelpCircle, FlameKindling } from 'lucide-react';
+import type { Disaster } from '../types/disaster';
 
-// Fix Leaflet's default icon
+// Fix Leaflet's default icon imports
 import L from 'leaflet';
 import iconUrl from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 
-// Set up default icon
 L.Marker.prototype.options.icon = L.icon({
   iconUrl,
   shadowUrl: iconShadow,
@@ -20,11 +20,88 @@ L.Marker.prototype.options.icon = L.icon({
   shadowSize: [41, 41]
 });
 
-interface MapProps {
-  disasters: Disaster[];
-  onMarkerClick: (disaster: Disaster) => void;
-  isDarkMode: boolean;
+// Helper functions remain the same
+const getDisasterIcon = (type: string) => {
+  const iconMap: { [key: string]: any } = {
+    'gempa bumi': AlertTriangle,
+    'banjir': Waves,
+    'tanah longsor': Pickaxe,
+    'cuaca ekstrem': CloudLightning,
+    'kebakaran': FlameKindling,
+    'tsunami': AudioWaveform,
+    'gunung meletus': MountainSnow,
+    'kekeringan': ThermometerSun,
+    'angin topan': Wind,
+  };
+  return iconMap[type] || HelpCircle;
+};
+
+const getDisasterColor = (type: string) => {
+  const colorMap: { [key: string]: string } = {
+  'gempa bumi': 'text-red-500',
+  'banjir': 'text-blue-500',
+  'tanah longsor': 'text-gray-500',
+  'cuaca ekstrem': 'text-yellow-500',
+  'kebakaran': 'text-red-600',
+  'tsunami': 'text-blue-700',
+  'gunung meletus': 'text-orange-600',
+  'kekeringan': 'text-yellow-600',
+  'angin topan': 'text-cyan-600',
+  };
+  return colorMap[type] || 'text-gray-500';
+};
+
+interface FilterButtonProps {
+  icon: React.ReactNode;
+  label: string;
+  active: boolean;
+  onClick: () => void;
 }
+
+const FilterButton: React.FC<FilterButtonProps> = ({ icon, label, active, onClick }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  
+  return (
+    <div className="relative mb-1.5">
+      <button
+        onClick={onClick}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        className={`
+          relative flex items-center justify-center
+          w-8 h-8 md:w-10 md:h-10 rounded-full
+          transition-all duration-300 transform
+          ${active 
+            ? 'bg-indigo-600 dark:bg-indigo-500 text-white scale-105 shadow-lg' 
+            : 'bg-white/90 dark:bg-gray-800/90 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700'
+          }
+          backdrop-blur-sm
+        `}
+        aria-label={label}
+      >
+        {React.cloneElement(icon as React.ReactElement, { 
+          size: typeof window !== 'undefined' && window.innerWidth < 768 ? 16 : 18 
+        })}
+      </button>
+      
+      {isHovered && (
+        <div className="absolute right-full mr-2 top-1/2 -translate-y-1/2
+                      whitespace-nowrap px-2 py-1
+                      bg-white dark:bg-gray-800
+                      text-xs md:text-sm font-medium 
+                      text-gray-800 dark:text-gray-200
+                      rounded-md shadow-lg
+                      z-[10]">
+          {label}
+          <div className="absolute top-1/2 -translate-y-1/2 right-[-8px]
+                        w-2 h-2 
+                        bg-white dark:bg-gray-800 
+                        rotate-45" />
+        </div>
+      )}
+    </div>
+  );
+};
 
 const getSeverityStyles = (severity: 'low' | 'medium' | 'high', isDarkMode: boolean) => {
   const styles = {
@@ -44,7 +121,6 @@ const getSeverityStyles = (severity: 'low' | 'medium' | 'high', isDarkMode: bool
       shadow: 'shadow-red-500/20'
     }
   };
-
   return styles[severity];
 };
 
@@ -53,7 +129,11 @@ const createCustomIcon = (IconComponent: any, color: string, severity: 'low' | '
   const borderWidth = severity === 'high' ? 'border-3' : severity === 'medium' ? 'border-2' : 'border';
   
   const html = renderToString(
-    <div className={`flex items-center justify-center w-8 h-8 rounded-full ${styles.background} ${borderWidth} ${styles.border} shadow-lg ${styles.shadow}`}>
+    <div className={`
+      flex items-center justify-center w-8 h-8 rounded-full 
+      ${styles.background} ${borderWidth} ${styles.border} 
+      shadow-lg ${styles.shadow} transition-transform duration-200 hover:scale-110
+    `}>
       <IconComponent className={`w-5 h-5 ${color}`} />
     </div>
   );
@@ -67,107 +147,97 @@ const createCustomIcon = (IconComponent: any, color: string, severity: 'low' | '
   });
 };
 
-const getDisasterIcon = (type: string, severity: 'low' | 'medium' | 'high', isDarkMode: boolean) => {
-  const normalizedType = type.toLowerCase();
-  
-  const iconMapping: Record<string, { icon: any; color: string }> = {
-    'gempa bumi': { icon: AlertTriangle, color: 'text-red-500' },
-    'banjir': { icon: Droplets, color: 'text-blue-500' },
-    'tsunami': { icon: Waves, color: 'text-blue-700' },
-    'tanah longsor': { icon: Mountain, color: 'text-yellow-700' },
-    'gunung meletus': { icon: Flame, color: 'text-red-600' },
-    'kebakaran': { icon: Flame, color: 'text-orange-500' },
-    'kekeringan': { icon: CloudRain, color: 'text-yellow-500' },
-    'angin puting beliung': { icon: Wind, color: 'text-cyan-500' },
-    'wabah penyakit': { icon: Brush, color: 'text-purple-500' },
-    'other': { icon: HelpCircle, color: 'text-gray-500' }
-  };
+const DisasterMap: React.FC<{
+  disasters: Disaster[];
+  onMarkerClick: (disaster: Disaster) => void;
+  isDarkMode: boolean;
+}> = ({ disasters, onMarkerClick, isDarkMode }) => {
+  const [activeFilters, setActiveFilters] = useState<string[]>([]);
 
-  const iconConfig = iconMapping[normalizedType] || iconMapping['other'];
-  return createCustomIcon(iconConfig.icon, iconConfig.color, severity, isDarkMode);
-};
+  const filters = [
+    { id: 'gempa-bumi', label: 'Gempa Bumi', icon: <AlertTriangle /> },
+    { id: 'banjir', label: 'Banjir', icon: <Waves /> },
+    { id: 'tanah longsor', label: 'Tanah Longsor', icon: <Mountain className="rotate-180"/> },
+    { id: 'cuaca ekstrem', label: 'Cuaca Ekstrem', icon: <CloudLightning /> },
+    { id: 'kebakaran', label: 'Kebakaran', icon: <FlameKindling /> },
+    { id: 'tsunami', label: 'Tsunami', icon: <AudioWaveform /> },
+    { id: 'gunung meletus', label: 'Gunung Meletus', icon: <MountainSnow /> },
+    { id: 'kekeringan', label: 'Kekeringan', icon: <ThermometerSun /> },
+    { id: 'angin topan', label: 'Angin Topan', icon: <Wind /> },
+  ];
 
-const Map = ({ disasters, onMarkerClick, isDarkMode }: MapProps) => {
+  const filteredDisasters = disasters.filter(disaster => 
+    activeFilters.length === 0 || activeFilters.includes(disaster.type)
+  );
+
   return (
-    <MapContainer
-      center={[-2.5489, 118.0149]}
-      zoom={5}
-      className={`w-full h-full rounded-lg ${isDarkMode ? 'dark-map' : ''}`}
-      zoomControl={false} // We'll add zoom controls in a better position
-    >
-      {/* Add zoom control in top-right corner */}
-      <div className="absolute top-4 right-4 z-[1000]">
-        <div className="leaflet-control leaflet-bar">
-          {/* Custom zoom controls if needed */}
-        </div>
-      </div>
-
-      // Update the TileLayer configuration in the Map component:
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        url={isDarkMode 
-          ? 'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png'
-          : 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-        }
-        className={isDarkMode ? 'brightness-100 contrast-100' : ''}
-      />
-
-      {disasters.map((disaster) => {
-        if (!disaster.location.lat || !disaster.location.lng || 
-            isNaN(disaster.location.lat) || isNaN(disaster.location.lng)) {
-          return null;
-        }
-
-        return (
+    <div className="relative w-full h-full">
+      <MapContainer
+        center={[-2.5489, 118.0149]}
+        zoom={5}
+        className={`w-full h-full rounded-lg ${isDarkMode ? 'dark-map' : ''}`}
+        zoomControl={false}
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+          url={isDarkMode 
+            ? 'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png'
+            : 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+          }
+          className={isDarkMode ? 'brightness-100 contrast-100' : ''}
+        />
+        
+        {filteredDisasters.map((disaster) => (
           <Marker
             key={disaster.id}
             position={[disaster.location.lat, disaster.location.lng]}
-            icon={getDisasterIcon(disaster.type, disaster.severity, isDarkMode)}
-            eventHandlers={{
-              click: () => onMarkerClick(disaster),
-            }}
+            icon={createCustomIcon(
+              getDisasterIcon(disaster.type),
+              getDisasterColor(disaster.type),
+              disaster.severity,
+              isDarkMode
+            )}
+            eventHandlers={{ click: () => onMarkerClick(disaster) }}
           >
-            <Popup className={isDarkMode ? 'dark-popup' : ''}>
-              <div className={`p-3 rounded-lg ${isDarkMode ? 'bg-gray-800 text-gray-100' : 'bg-white text-gray-800'}`}>
-                <h3 className="font-bold text-base mb-1">{disaster.location.name}</h3>
-                <p className="capitalize text-sm mb-1">{disaster.type}</p>
-                <div className={`text-xs px-2 py-1 rounded-full inline-block
-                  ${disaster.severity === 'high' ? 'bg-red-500/10 text-red-400' :
-                  disaster.severity === 'medium' ? 'bg-orange-500/10 text-orange-400' :
-                  'bg-yellow-500/10 text-yellow-400'}`
-                }>
-                  {disaster.severity.charAt(0).toUpperCase() + disaster.severity.slice(1)} Severity
+            <Popup className={`${isDarkMode ? 'dark-popup' : ''} !w-auto min-w-[200px] max-w-[300px]`}>
+              <div className="p-2">
+                <h3 className="font-bold text-lg mb-1 dark:text-white">{disaster.title}</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">{disaster.description}</p>
+                <div className="text-xs text-gray-500 dark:text-gray-400">
+                  Lokasi: {disaster.location.name}
                 </div>
               </div>
             </Popup>
           </Marker>
-        );
-      })}
-    </MapContainer>
+        ))}
+      </MapContainer>
+
+      {/* Vertical filter controls */}
+      <div className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-[10]">
+        <div className="flex flex-col gap-1.5 p-2 md:p-3 
+                      rounded-full 
+                      bg-white/90 dark:bg-gray-800/90 
+                      backdrop-blur-sm 
+                      shadow-lg dark:shadow-gray-900/50">
+          {filters.map(filter => (
+            <FilterButton
+              key={filter.id}
+              icon={filter.icon}
+              label={filter.label}
+              active={activeFilters.includes(filter.id)}
+              onClick={() => {
+                setActiveFilters(prev => 
+                  prev.includes(filter.id)
+                    ? prev.filter(id => id !== filter.id)
+                    : [...prev, filter.id]
+                );
+              }}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
   );
 };
 
-const mapStyles = `
-  .dark-map {
-    filter: brightness(0.9) contrast(1.1);
-  }
-  
-  .dark-map .leaflet-popup-content-wrapper {
-    background-color: #1f2937;
-    color: #f3f4f6;
-  }
-  
-  .dark-map .leaflet-popup-tip {
-    background-color: #1f2937;
-  }
-  
-  .disaster-marker > div {
-    transition: transform 0.2s;
-  }
-  
-  .disaster-marker > div:hover {
-    transform: scale(1.1);
-  }
-`;
-
-export default Map;
+export default DisasterMap;

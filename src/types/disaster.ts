@@ -3,12 +3,12 @@ export type DisasterType =
   | 'flood'
   | 'tsunami'
   | 'landslide'
-  | 'volcano'
+  | 'extreme-weather'
   | 'fire'
   | 'drought'
-  | 'cyclone'
-  | 'epidemic'
+  | 'typhoon'
   | 'other';
+
 
 export interface Disaster {
   id: string;

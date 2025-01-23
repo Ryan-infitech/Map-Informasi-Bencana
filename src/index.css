@@ -1,63 +1,142 @@
+/*index.css*/
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Base map container styles */
-.leaflet-container {
+@layer base {
+  :root {
+    @apply light;
+  }
+
+  .dark {
+    @apply bg-gray-900 text-white;
+  }
+
+  .light {
+    @apply bg-white text-gray-900;
+  }
+}
+
+/* Base popup styles */
+.leaflet-popup {
+  z-index: 2000 !important;
+}
+
+/*warna shadow box pop uu kecil*/
+.leaflet-popup-content-wrapper {
+  z-index: 2000 !important;
+  border-radius: 0.75rem !important;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.leaflet-popup-tip {
+  z-index: 2000 !important;
+}
+
+.leaflet-popup-content {
+  margin: 0 !important;
+  width: auto !important;
+  min-width: 200px;
+  max-width: 300px;
+}
+
+/* Remove default popup tip */
+.leaflet-popup-tip-container {
+  display: none !important;
+}
+
+/* Dark mode specific styles */
+.dark .leaflet-popup-content-wrapper {
+  background-color: #1f2937 !important;
+  border: 1px solid #374151 !important;
+}
+
+.dark .leaflet-popup-content-wrapper .p-2 h3 {
+  color: #ffffff !important;
+}
+
+/*warna teks popup kecil di darkmode*/
+.dark .leaflet-popup-content-wrapper .p-2 p,
+.dark .leaflet-popup-content-wrapper .p-2 div {
+  color: #d1d5db !important;
+}
+
+.dark .leaflet-popup-content-wrapper .text-gray-500,
+.dark .leaflet-popup-content-wrapper .text-gray-600,
+.dark .leaflet-popup-content-wrapper .text-gray-400 {
+  color: #9ca3af !important;
+}
+
+/* warna box dan teks pop up kecil lightmode */
+.light .leaflet-popup-content-wrapper {
+  background-color: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+.light .leaflet-popup-content-wrapper .p-2 h3 {
+  color: #111827 !important;
+}
+
+/*warna teks pop up kecil lightmode*/
+.light .leaflet-popup-content-wrapper .p-2 p,
+.light .leaflet-popup-content-wrapper .p-2 div {
+  color: #4b5563 !important;
+}
+
+.light .leaflet-popup-content-wrapper .text-gray-500,
+.light .leaflet-popup-content-wrapper .text-gray-600,
+.light .leaflet-popup-content-wrapper .text-gray-400 {
+  color: #000000 !important;
+}
+
+/* Map styles */
+.map-container {
+  position: relative;
   width: 100%;
   height: 100%;
-  z-index: 1;
-  @apply rounded-lg;
 }
 
-/* Dark mode map adjustments */
-.dark .leaflet-container {
-  /* Adjusted brightness and contrast for better visibility */
-  filter: brightness(0.95) contrast(1.1);
+.leaflet-container {
+  width: 100%;
+  height: 100vh;
 }
 
-/* Custom background for dark mode components */
-.dark .map-container {
-  @apply bg-gray-900;
+/* Dark map styles */
+.dark-map {
+  filter: brightness(0.9) contrast(1.1);
 }
 
-/* Popup styling for dark mode */
-.dark .leaflet-popup-content-wrapper,
-.dark .leaflet-popup-tip {
-  @apply bg-gray-800 text-white;
-}
-
-/* Marker drop shadow effects */
+/* Marker styles */
 .disaster-marker {
-  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1)) 
-          drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
+  background: transparent !important;
 }
 
-/* Dark mode marker shadow */
-.dark .disaster-marker {
-  filter: drop-shadow(0 1px 2px rgb(255 255 255 / 0.15)) 
-          drop-shadow(0 1px 1px rgb(255 255 255 / 0.1));
+.disaster-marker > div {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: transform 0.2s ease-in-out !important;
+  z-index: 1500 !important;
 }
 
-/* Dark mode specific controls */
-.dark .leaflet-control-zoom a {
-  @apply bg-gray-800 text-white border-gray-700;
+.disaster-marker > div:hover {
+  transform: scale(1.1) !important;
 }
 
-.dark .leaflet-control-zoom a:hover {
-  @apply bg-gray-700;
+.leaflet-top,
+.leaflet-bottom {
+  z-index: 1000 !important;
 }
 
-/* Dark mode attribution */
-.dark .leaflet-control-attribution {
-  @apply bg-gray-800 text-gray-300;
-}
-
-/* Dark mode search and filter components */
-.dark .search-container {
-  @apply bg-gray-800 border-gray-700;
-}
-
-.dark .filter-button {
-  @apply bg-gray-700 hover:bg-gray-600 text-white;
+/* Responsive styles */
+@media (max-width: 768px) {
+  .leaflet-popup-content {
+    min-width: 150px;
+    max-width: 250px;
+  }
+  
+  .disaster-popup {
+    font-size: 14px;
+  }
 }
