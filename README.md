@@ -67,3 +67,11 @@ Proyek ini dirancang untuk memvisualisasikan data bencana alam secara real-time 
 3. **Klik Ikon Bencana**: Dapatkan detail informasi seperti jenis bencana, lokasi, waktu, dan tingkat keparahan.  
 4. **Gunakan Filter**: Pilih jenis bencana tertentu melalui tombol di sisi kanan layar.  
 5. **Mode Tampilan**: Ubah mode terang/gelap melalui tombol di sudut kanan atas.
+
+## Contoh Tampilan
+
+### Peta Interaktif
+![](./readmemedia/sslightmode.png)
+
+### Filter Jenis Bencana
+![](./readmemedia/ssdarkmode.png)
