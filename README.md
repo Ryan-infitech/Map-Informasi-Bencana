@@ -25,8 +25,11 @@ Proyek ini dirancang untuk memvisualisasikan data bencana alam secara real-time 
 
 ## Teknologi yang Digunakan
 ![](./readmemedia/vite+react.gif)  
+
 <div align="center">
-![AWS](./readmemedia/aws.gif)  ![Vercel](./readmemedia/vercel.gif)  ![Leaflet.js](./readmemedia/leaflet.gif)  ![Tailwind CSS](./readmemedia/tailwind.gif)
+   
+![AWS](https://github.com/Ryan-infitech/Map-Informasi-Bencana/blob/main/readmemedia/aws.gif)  ![Vercel](https://github.com/Ryan-infitech/Map-Informasi-Bencana/blob/main/readmemedia/vercel.gif)  ![Leaflet.js](https://github.com/Ryan-infitech/Map-Informasi-Bencana/blob/main/readmemedia/leaflet.gif)  ![Tailwind CSS](https://github.com/Ryan-infitech/Map-Informasi-Bencana/blob/main/readmemedia/tailwind.gif)
+
 </div>
 
 
