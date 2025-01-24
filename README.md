@@ -55,9 +55,9 @@ Proyek ini dirancang untuk memvisualisasikan data bencana alam secara real-time 
 3. **Konfigurasi file `.env`:**
    Buat file `.env` di root proyek dan masukkan variabel-variabel berikut:
    ```env
-   REACT_APP_BMKG_API_KEY=your-api-key
-   REACT_APP_AWS_ACCESS_KEY_ID=your-aws-access-key
-   REACT_APP_AWS_SECRET_ACCESS_KEY=your-aws-secret-key
+   VITE_AWS_ACCESS_KEY_ID=your-aws-key-id
+   VITE_AWS_SECRET_ACCESS_KEY=your-aws-secret-access-key
+   VITE_AWS_REGION=your-aws-region
    ```
 
 4. **Menjalankan aplikasi lokal:**
