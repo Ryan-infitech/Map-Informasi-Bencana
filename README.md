@@ -2,11 +2,15 @@
 
 Website interaktif berbasis cloud yang menyajikan informasi real-time mengenai bencana alam di Indonesia dengan memanfaatkan teknologi React, Leaflet.js, dan Amazon Web Services (AWS). Sistem ini dirancang untuk memberikan akses mudah dan cepat kepada masyarakat serta pemangku kepentingan terkait mitigasi bencana.
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-00A4EF?style=for-the-badge&logo=web&logoColor=white)](https://zekia-map-bencana-indonesia.vercel.app/)  
-[![Documentation](https://img.shields.io/badge/Documentation-00A4EF?style=for-the-badge&logo=book&logoColor=white)](https://drive.google.com/file/d/1/documentation-link)
+<br>
 
+<div align="center">
 
+[![Live Demo](https://img.shields.io/badge/Live_Demo-00A4EF?style=for-the-badge&logo=web&logoColor=white)](https://zekia-map-bencana-indonesia.vercel.app/)  [![Documentation](https://img.shields.io/badge/Documentation-00A4EF?style=for-the-badge&logo=book&logoColor=white)](https://drive.google.com/file/d/1/documentation-link)
 
+</div>
+
+<br>
 ## Gambaran Umum
 
 Proyek ini dirancang untuk memvisualisasikan data bencana alam secara real-time menggunakan peta interaktif yang dilengkapi dengan ikon spesifik untuk setiap jenis bencana. Sistem ini memanfaatkan teknologi cloud AWS untuk menjamin skalabilitas dan ketersediaan informasi, serta dirancang responsif agar dapat diakses melalui berbagai perangkat.
@@ -31,6 +35,8 @@ Proyek ini dirancang untuk memvisualisasikan data bencana alam secara real-time 
 ![AWS](https://github.com/Ryan-infitech/Map-Informasi-Bencana/blob/main/readmemedia/aws.gif)  ![Vercel](https://github.com/Ryan-infitech/Map-Informasi-Bencana/blob/main/readmemedia/vercel.gif)  ![Leaflet.js](https://github.com/Ryan-infitech/Map-Informasi-Bencana/blob/main/readmemedia/leaflet.gif)  ![Tailwind CSS](https://github.com/Ryan-infitech/Map-Informasi-Bencana/blob/main/readmemedia/tailwind.gif)
 
 </div>
+
+<br>
 
 
 ## Instalasi dan Konfigurasi
