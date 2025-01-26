@@ -19,7 +19,9 @@ Website interaktif berbasis cloud yang menyajikan informasi real-time mengenai b
 
 <br>
 
-![](./readmemedia/preview.gif)
+<div align=center>
+![](https://github.com/Ryan-infitech/Map-Informasi-Bencana/blob/main/readmemedia/preview.gif)
+</div>
 
 ## Gambaran Umum
 

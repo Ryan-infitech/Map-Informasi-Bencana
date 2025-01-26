@@ -19,7 +19,9 @@ A cloud-based interactive website that provides real-time information about natu
 
 <br>
 
-![](./readmemedia/preview.gif)
+<div align=center>
+![](https://github.com/Ryan-infitech/Map-Informasi-Bencana/blob/main/readmemedia/preview.gif)
+</div>
 
 ## Overview
 
