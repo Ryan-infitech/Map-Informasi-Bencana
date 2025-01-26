@@ -1,6 +1,6 @@
 <div align="right">
 
-<img src="https://flagcdn.com/w40/gb.png" width="35" alt="English"> | <img src="https://flagcdn.com/w40/id.png" width="30" alt="./README-ID.md">
+<img src="https://flagcdn.com/w40/gb.png" width="35" alt="English"> | <img src="https://flagcdn.com/w40/id.png" width="30" link href="./README-ID.md">
 
 </div>
 
