@@ -1,8 +1,8 @@
-<div align=right>
+<div align="right">
 
-eng | id![](./README-ID.md)
+<img src="https://flagcdn.com/w40/gb.png" width="35" alt="English"> | <img src="https://flagcdn.com/w40/id.png" width="30" alt="./README-ID.md">
 
-</div> 
+</div>
 
 # Indonesia Disaster Monitoring System
 
