@@ -1,3 +1,10 @@
+<div align="right">
+
+<a href="README.md"><img src="https://flagcdn.com/w40/gb.png" width="25" alt="English"></a> | 
+<a href="README-ID.md"><img src="https://flagcdn.com/w40/id.png" width="20" alt="Indonesian"></a>
+
+</div>
+
 # Sistem Pemantauan Data Bencana Indonesia
 
 Website interaktif berbasis cloud yang menyajikan informasi real-time mengenai bencana alam di Indonesia dengan memanfaatkan teknologi React, Leaflet.js, dan Amazon Web Services (AWS). Sistem ini dirancang untuk memberikan akses mudah dan cepat kepada masyarakat serta pemangku kepentingan terkait mitigasi bencana.
