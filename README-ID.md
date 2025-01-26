@@ -12,6 +12,7 @@ Website interaktif berbasis cloud yang menyajikan informasi real-time mengenai b
 
 <br>
 
+![](./readmemedia/preview.gif)
 
 ## Gambaran Umum
 
