@@ -19,8 +19,10 @@ A cloud-based interactive website that provides real-time information about natu
 
 <br>
 
-<div align=center>
-![](https://github.com/Ryan-infitech/Map-Informasi-Bencana/blob/main/readmemedia/preview.gif)
+<div align="center">
+
+![preview](https://github.com/Ryan-infitech/Map-Informasi-Bencana/blob/main/readmemedia/preview.gif)
+
 </div>
 
 ## Overview
@@ -51,7 +53,7 @@ This project is designed to visualize real-time natural disaster data using an i
 - **Light/Dark Mode**: Adjustable display for user comfort.  
 - **Responsive Design**: Optimally accessible on desktop, tablet, and mobile devices.
 
-## Technologies Used
+## Tech Stack
 ![](./readmemedia/vite+react.gif)  
 
 <div align="center">
