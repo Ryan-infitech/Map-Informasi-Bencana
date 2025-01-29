@@ -13,7 +13,7 @@ A cloud-based interactive website that provides real-time information about natu
 
 <div align="center">
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-00A4EF?style=for-the-badge&logo=web&logoColor=white)](https://zekia-map-bencana-indonesia.vercel.app/)  [![Documentation](https://img.shields.io/badge/Documentation-00A4EF?style=for-the-badge&logo=book&logoColor=white)](https://drive.google.com/file/d/1/documentation-link)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-00A4EF?style=for-the-badge&logo=web&logoColor=white)](https://zekia-map-bencana-indonesia.vercel.app/)  [![Documentation](https://img.shields.io/badge/Documentation-00A4EF?style=for-the-badge&logo=book&logoColor=white)](https://drive.google.com/file/d/1fNdvSFGxiFrcWCKH0iKVoJJOPUsXY9Po/view?usp=drive_link)
 
 </div>
 
