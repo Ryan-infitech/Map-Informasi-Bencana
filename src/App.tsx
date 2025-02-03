@@ -7,6 +7,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { Disaster, DisasterType } from "./types/disaster";
 import { AlertOctagon, Moon, Sun } from "lucide-react";
 import { fetchDisasters } from "./services/api";
+import InfoModal from "./components/InfoModal";
 
 function App() {
   const [selectedDisaster, setSelectedDisaster] = useState<Disaster | null>(
@@ -91,26 +92,27 @@ function App() {
           isDarkMode ? "dark" : ""
         }`}
       >
-        <header className="bg-white dark:bg-gray-800 shadow-md p-4">
-          <div className="container mx-auto flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <AlertOctagon className="h-8 w-8 text-red-600 dark:text-red-400" />
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-                Pantau Bencana Indonesia
-              </h1>
-            </div>
-            <button
-              onClick={() => setIsDarkMode(!isDarkMode)}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-            >
-              {isDarkMode ? (
-                <Sun className="h-5 w-5" />
-              ) : (
-                <Moon className="h-5 w-5" />
-              )}
-            </button>
+      <header className="bg-white dark:bg-gray-800 shadow-md p-4">
+        <div className="container mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <AlertOctagon className="h-8 w-8 text-red-600 dark:text-red-400" />
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+              Pantau Bencana Indonesia
+            </h1>
+            <InfoModal />
           </div>
-        </header>
+          <button
+            onClick={() => setIsDarkMode(!isDarkMode)}
+            className="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+          >
+            {isDarkMode ? (
+              <Sun className="h-5 w-5" />
+            ) : (
+              <Moon className="h-5 w-5" />
+            )}
+          </button>
+        </div>
+      </header>
 
         {/* Add dark:bg-gray-900 to the container div */}
         <div className="container mx-auto p-4 flex-1 flex flex-col gap-4 bg-white dark:bg-gray-900">
