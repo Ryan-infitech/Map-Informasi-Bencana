@@ -25,7 +25,7 @@ const getDisasterIcon = (type: string) => {
   const iconMap: { [key: string]: any } = {
     'gempa bumi': AlertTriangle,
     'banjir': Waves,
-    'tanah longsor': Pickaxe,
+    'tanah longsor': Mountain,
     'cuaca ekstrem': CloudLightning,
     'kebakaran': FlameKindling,
     'tsunami': AudioWaveform,
@@ -107,18 +107,18 @@ const getSeverityStyles = (severity: 'low' | 'medium' | 'high', isDarkMode: bool
   const styles = {
     low: {
       background: isDarkMode ? 'bg-gray-800' : 'bg-white',
-      border: isDarkMode ? 'border-yellow-500' : 'border-yellow-400',
-      shadow: 'shadow-yellow-500/20'
+      border: isDarkMode ? 'border-yellow-300' : 'border-yellow-300',
+      shadow: 'shadow-yellow-300/60'
     },
     medium: {
       background: isDarkMode ? 'bg-gray-800' : 'bg-white',
-      border: isDarkMode ? 'border-orange-500' : 'border-orange-400',
-      shadow: 'shadow-orange-500/20'
+      border: isDarkMode ? 'border-orange-300' : 'border-orange-300',
+      shadow: 'shadow-orange-400'
     },
     high: {
-      background: isDarkMode ? 'bg-gray-800' : 'bg-white',
-      border: isDarkMode ? 'border-red-500' : 'border-red-400',
-      shadow: 'shadow-red-500/20'
+      background: isDarkMode ? 'bg-orange-400' : 'bg-orange-200',
+      border: isDarkMode ? 'border-red-400' : 'border-red-400',
+      shadow: 'shadow-red-600'
     }
   };
   return styles[severity];

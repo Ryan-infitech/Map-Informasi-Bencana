@@ -45,10 +45,10 @@ const DisasterDetails = ({ disaster, isOpen, onClose }: DisasterDetailsProps) =>
             <div>
               <p className={`text-gray-${document.documentElement.classList.contains('dark') ? '400' : '600'}`}>Tingkat Keparahan:</p>
               <span className={`inline-block px-2 py-1 rounded ${
-                disaster.severity === 'high' ? 'bg-red-100 text-red-800' :
-                disaster.severity === 'medium' ? 'bg-yellow-100 text-yellow-800' :
+                disaster.severity === 'high' ? 'bg-red-300 text-red-800' :
+                disaster.severity === 'medium' ? 'bg-yellow-200 text-yellow-800' :
                 'bg-green-100 text-green-800'
-              } ${document.documentElement.classList.contains('dark') ? 'bg-opacity-50 text-opacity-100' : ''}`}>
+              } ${document.documentElement.classList.contains('dark') ? 'bg-opacity- text-opacity-100' : ''}`}>
                 {disaster.severity === 'high' ? 'Tinggi' :
                  disaster.severity === 'medium' ? 'Sedang' : 'Rendah'}
               </span>
