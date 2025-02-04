@@ -7,22 +7,17 @@ const InfoModal = () => {
   const socialLinks = [
     {
       icon: Github,
-      href: "https://github.com/yourusername",
+      href: "https://github.com/Ryan-infitech",
       label: "GitHub"
     },
     {
-      icon: Twitter,
-      href: "https://twitter.com/yourusername",
-      label: "Twitter"
-    },
-    {
       icon: Mail,
-      href: "mailto:your@email.com",
+      href: "mailto:rianseptiawan@infitech.or.id",
       label: "Email"
     },
     {
       icon: Globe,
-      href: "https://yourwebsite.com",
+      href: "https://riyanseptiawan.github.io/",
       label: "Website"
     }
   ];
@@ -65,7 +60,7 @@ const InfoModal = () => {
               {/* Social Links */}
               <div className="border-t border-gray-200 dark:border-gray-700 pt-6 mb-6">
                 <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4">
-                  Connect With Us
+                  Connect With
                 </h3>
                 <div className="flex gap-4">
                   {socialLinks.map((link) => (
