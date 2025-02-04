@@ -105,7 +105,7 @@ const InfoModal = () => {
                 <div className="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center">
                   <User className="h-6 w-6 text-gray-400 dark:text-gray-500" />
                   <img
-                    src="readmemedia\rian septiawan.jpg"
+                    src="https://github.com/Ryan-infitech/Map-Informasi-Bencana/blob/main/readmemedia/rian%20septiawan.jpg?raw=true"
                     alt="Rian Septiawan"
                     className="h-10 w-10 rounded-full object-cover"
                   />
