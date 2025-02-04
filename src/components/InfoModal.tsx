@@ -1,68 +1,83 @@
-import React, { useState, useEffect } from 'react';
-import { Info, X, Github, Mail, Globe } from 'lucide-react';
+import React, { useState, useRef, useEffect } from "react";
+import { Info, X, Github, Mail, Globe, User } from "lucide-react";
 
 const InfoModal = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [shouldRender, setShouldRender] = useState(false);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const [origin, setOrigin] = useState({ x: 0, y: 0 });
+
+  const updatePosition = () => {
+    if (buttonRef.current) {
+      const rect = buttonRef.current.getBoundingClientRect();
+      const x = rect.left + rect.width / 2;
+      const y = rect.top + rect.height / 2;
+
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+
+      setOrigin({
+        x: (x / viewportWidth) * 100,
+        y: (y / viewportHeight) * 100,
+      });
+    }
+  };
 
   useEffect(() => {
-    if (isModalOpen) {
-      setShouldRender(true);
-    } else {
-      const timer = setTimeout(() => {
-        setShouldRender(false);
-      }, 500); // Match this with the transition duration
-      return () => clearTimeout(timer);
-    }
-  }, [isModalOpen]);
+    updatePosition();
+    window.addEventListener("resize", updatePosition);
+    return () => window.removeEventListener("resize", updatePosition);
+  }, []);
 
   const socialLinks = [
     {
       icon: Github,
       href: "https://github.com/Ryan-infitech",
-      label: "GitHub"
+      label: "GitHub",
     },
     {
       icon: Mail,
       href: "mailto:rianseptiawan@infitech.or.id",
-      label: "Email"
+      label: "Email",
     },
     {
       icon: Globe,
       href: "https://riyanseptiawan.github.io/",
-      label: "Website"
-    }
+      label: "Website",
+    },
   ];
 
   return (
     <>
       <button
+        ref={buttonRef}
         className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-        onClick={() => setIsModalOpen(true)}
+        onClick={() => {
+          updatePosition();
+          setIsModalOpen(true);
+        }}
         aria-label="Information"
       >
         <Info className="h-5 w-5 text-gray-600 dark:text-gray-300" />
       </button>
-      
-      {/* Modal container - selalu dirender tapi tersembunyi */}
-      <div 
+
+      <div
         className={`fixed inset-0 z-50 flex items-center justify-center p-4 transition-all duration-300
-          ${isModalOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
+          ${isModalOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}
       >
-        {/* Backdrop dengan animasi */}
-        <div 
+        <div
           className={`absolute inset-0 bg-black transition-opacity duration-300 backdrop-blur-sm
-            ${isModalOpen ? 'opacity-50' : 'opacity-0'}`}
+            ${isModalOpen ? "opacity-50" : "opacity-0"}`}
           onClick={() => setIsModalOpen(false)}
         />
 
-        {/* Modal dengan animasi */}
-        <div 
+        <div
+          style={{
+            transformOrigin: `${origin.x}% ${origin.y}%`,
+          }}
           className={`relative w-full max-w-md bg-white dark:bg-gray-800 rounded-lg shadow-xl 
             transition-all duration-300 transform
-            ${isModalOpen ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-4'}`}
+            ${isModalOpen ? "opacity-100 scale-100" : "opacity-0 scale-0"}`}
         >
-          {/* Close button */}
           <button
             onClick={() => setIsModalOpen(false)}
             className="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
@@ -70,8 +85,7 @@ const InfoModal = () => {
           >
             <X className="h-5 w-5 text-gray-600 dark:text-gray-300" />
           </button>
-          
-          {/* Content */}
+
           <div className="p-8">
             <div className="flex items-center gap-3 mb-4">
               <Info className="h-6 w-6 text-blue-500" />
@@ -79,16 +93,32 @@ const InfoModal = () => {
                 Pantau Bencana Indonesia
               </h2>
             </div>
-            
+
             <p className="text-gray-600 dark:text-gray-300 mb-6">
-              Web-app pemetaan bencana real-time yang menampilkan informasi terkini tentang kejadian bencana alam di seluruh Indonesia. Data bersumber dari BNPB dan lembaga terkait.
+              Web-app pemetaan bencana real-time yang menampilkan informasi
+              terkini tentang kejadian bencana alam di seluruh Indonesia. Data
+              bersumber dari BNPB dan lembaga terkait.
             </p>
 
-            {/* Social Links */}
             <div className="border-t border-gray-200 dark:border-gray-700 pt-6 mb-6">
-              <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4">
-                Connect With
-              </h3>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center">
+                  <User className="h-6 w-6 text-gray-400 dark:text-gray-500" />
+                  <img
+                    src="readmemedia\rian septiawan.jpg"
+                    alt="Rian Septiawan"
+                    className="h-10 w-10 rounded-full object-cover"
+                  />
+                </div>
+                <div>
+                  <h3 className="text-sm font-semibold text-gray-900 dark:text-white">
+                    Rian Septiawan
+                  </h3>
+                  <p className="text-xs text-gray-500 dark:text-gray-400">
+                    Connect
+                  </p>
+                </div>
+              </div>
               <div className="flex gap-4">
                 {socialLinks.map((link) => (
                   <a
@@ -105,7 +135,6 @@ const InfoModal = () => {
               </div>
             </div>
 
-            {/* Copyright */}
             <div className="text-sm text-gray-500 dark:text-gray-400">
               <p>© {new Date().getFullYear()} Pantau Bencana Indonesia.</p>
               <p>All rights reserved.</p>
