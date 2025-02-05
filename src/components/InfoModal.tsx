@@ -65,8 +65,8 @@ const InfoModal = () => {
           ${isModalOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}
       >
         <div
-          className={`absolute inset-0 bg-black transition-opacity duration-300 backdrop-blur-sm
-            ${isModalOpen ? "opacity-50" : "opacity-0"}`}
+          className={`absolute inset-0 bg-black/30 transition-opacity duration-300 backdrop-blur-md
+            ${isModalOpen ? "opacity-100" : "opacity-0"}`}
           onClick={() => setIsModalOpen(false)}
         />
 
@@ -74,8 +74,9 @@ const InfoModal = () => {
           style={{
             transformOrigin: `${origin.x}% ${origin.y}%`,
           }}
-          className={`relative w-full max-w-md bg-white dark:bg-gray-800 rounded-lg shadow-xl 
-            transition-all duration-300 transform
+          className={`relative w-full max-w-md bg-white/90 dark:bg-gray-800/90 rounded-lg shadow-xl 
+            transition-all duration-300 transform backdrop-blur-sm
+            hover:backdrop-blur-md hover:bg-white/95 dark:hover:bg-gray-800/95
             ${isModalOpen ? "opacity-100 scale-100" : "opacity-0 scale-0"}`}
         >
           <button
