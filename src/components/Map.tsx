@@ -155,7 +155,7 @@ const DisasterMap: React.FC<{
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
 
   const filters = [
-    { id: 'gempa-bumi', label: 'Gempa Bumi', icon: <AlertTriangle /> },
+    { id: 'gempa bumi', label: 'Gempa Bumi', icon: <AlertTriangle /> },
     { id: 'banjir', label: 'Banjir', icon: <Waves /> },
     { id: 'tanah longsor', label: 'Tanah Longsor', icon: <Mountain className="rotate-180"/> },
     { id: 'cuaca ekstrem', label: 'Cuaca Ekstrem', icon: <CloudLightning /> },
