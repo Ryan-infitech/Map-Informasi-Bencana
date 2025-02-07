@@ -31,7 +31,7 @@ const getDisasterIcon = (type: string) => {
     'tsunami': AudioWaveform,
     'gunung meletus': MountainSnow,
     'kekeringan': ThermometerSun,
-    'angin topan': Wind,
+    'gelombang pasang dan abrasi': Wind,
   };
   return iconMap[type] || HelpCircle;
 };
@@ -46,7 +46,7 @@ const getDisasterColor = (type: string) => {
   'tsunami': 'text-blue-700',
   'gunung meletus': 'text-orange-600',
   'kekeringan': 'text-yellow-600',
-  'angin topan': 'text-cyan-600',
+  'gelombang pasang dan abrasi': 'text-cyan-600',
   };
   return colorMap[type] || 'text-gray-500';
 };
@@ -163,7 +163,7 @@ const DisasterMap: React.FC<{
     { id: 'tsunami', label: 'Tsunami', icon: <AudioWaveform /> },
     { id: 'gunung meletus', label: 'Gunung Meletus', icon: <MountainSnow /> },
     { id: 'kekeringan', label: 'Kekeringan', icon: <ThermometerSun /> },
-    { id: 'angin topan', label: 'Angin Topan', icon: <Wind /> },
+    { id: 'gelombang pasang dan abrasi', label: 'Gelombang Pasang Dan Abrasi', icon: <Wind /> },
   ];
 
   const filteredDisasters = disasters.filter(disaster => 

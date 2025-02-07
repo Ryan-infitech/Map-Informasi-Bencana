@@ -89,7 +89,7 @@ const DisasterFilters = () => {
     { id: "tsunami", label: "Tsunami", icon: <AudioWaveform /> },
     { id: "gunung-meletus", label: "Gunung Meletus", icon: <MountainSnow /> },
     { id: "kekeringan", label: "Kekeringan", icon: <ThermometerSun /> },
-    { id: "angin-topan", label: "Angin Topan", icon: <Wind /> },
+    { id: "gelombang-pasang-dan-abrasi", label: "GELOMBANG PASANG DAN ABRASI", icon: <Wind /> },
   ];
 
   return (
