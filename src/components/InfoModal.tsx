@@ -91,7 +91,7 @@ const InfoModal = () => {
             <div className="flex items-center gap-3 mb-4">
               <img src="https://raw.githubusercontent.com/Ryan-infitech/Map-Informasi-Bencana/refs/heads/main/src/components/head%20title%20icon.ico" alt="info icon" className="h-6 w-6"/>
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                Pantau Bencana Indonesia
+               Map Bencana indonesia
               </h2>
             </div>
 
@@ -137,7 +137,7 @@ const InfoModal = () => {
             </div>
 
             <div className="text-sm text-gray-500 dark:text-gray-400">
-              <p>© {new Date().getFullYear()} Pantau Bencana Indonesia.</p>
+              <p>© {new Date().getFullYear()} Map Bencana indonesia.</p>
               <p>All rights reserved.</p>
             </div>
           </div>

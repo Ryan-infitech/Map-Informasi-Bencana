@@ -97,7 +97,7 @@ function App() {
           <div className="flex items-center gap-2">
             <AlertOctagon className="h-8 w-8 text-red-600 dark:text-red-400" />
             <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-              Pantau Bencana Indonesia
+             Map Bencana indonesia
             </h1>
             <InfoModal />
           </div>
