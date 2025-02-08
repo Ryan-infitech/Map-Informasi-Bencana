@@ -39,14 +39,14 @@ const getDisasterIcon = (type: string) => {
 const getDisasterColor = (type: string) => {
   const colorMap: { [key: string]: string } = {
   'gempa bumi': 'text-red-500',
-  'banjir': 'text-blue-500',
-  'tanah longsor': 'text-gray-500',
+  'banjir': 'text-blue-400',
+  'tanah longsor': 'text-amber-600',
   'cuaca ekstrem': 'text-yellow-500',
-  'kebakaran': 'text-red-600',
+  'kebakaran': 'text-orange-700',
   'tsunami': 'text-blue-700',
   'gunung meletus': 'text-orange-600',
   'kekeringan': 'text-yellow-600',
-  'gelombang pasang dan abrasi': 'text-cyan-600',
+  'gelombang pasang dan abrasi': 'text-blue-600',
   };
   return colorMap[type] || 'text-gray-500';
 };
