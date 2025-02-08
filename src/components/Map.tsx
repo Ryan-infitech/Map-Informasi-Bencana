@@ -172,13 +172,13 @@ const DisasterMap: React.FC<{
   );
 
   return (
-    <div className="relative w-full h-full">
-      <MapContainer
-        center={[-2.5489, 118.0149]}
-        zoom={5}
-        className={`w-full h-full rounded-lg ${isDarkMode ? 'dark-map' : ''}`}
-        zoomControl={false}
-      >
+  <div className="relative w-full h-full z-0">
+    <MapContainer
+      center={[-2.5489, 118.0149]}
+      zoom={5}
+      className={`w-full h-full rounded-lg ${isDarkMode ? 'dark-map' : ''}`}
+      zoomControl={false}
+    >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           url={isDarkMode 
@@ -214,8 +214,8 @@ const DisasterMap: React.FC<{
       </MapContainer>
 
       {/* Vertical filter controls */}
-      <div className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-[10]">
-        <div className="flex flex-col gap-1.5 p-2 md:p-3 
+      <div className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20">
+      <div className="flex flex-col gap-1.5 p-2 md:p-3 
                       rounded-full 
                       bg-white/90 dark:bg-gray-800/90 
                       backdrop-blur-sm 

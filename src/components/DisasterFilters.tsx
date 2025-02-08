@@ -93,7 +93,7 @@ const DisasterFilters = () => {
   ];
 
   return (
-    <div className="fixed right-4 top-1/2 -translate-y-1/2 z-40">
+    <div className="fixed right-4 top-1/2 -translate-y-1/2 z-20">
       <div className="flex flex-col p-3 rounded-3xl bg-white/90 backdrop-blur-sm shadow-xl">
         {filters.map((filter) => (
           <FilterButton

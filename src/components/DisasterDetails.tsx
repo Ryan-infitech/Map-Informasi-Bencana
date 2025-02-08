@@ -15,12 +15,12 @@ const DisasterDetails = ({ disaster, isOpen, onClose, isDarkMode }: DisasterDeta
   if (!disaster) return null;
 
   return (
-    <Dialog open={isOpen} onClose={onClose} className="relative z-[1000]">
-      <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
-      <div className="fixed inset-0 flex items-center justify-center p-4">
-        <Dialog.Panel className={`mx-auto max-w-lg rounded p-6 ${
-          isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'
-        }`}>
+  <Dialog open={isOpen} onClose={onClose} className="relative z-30">
+    <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
+    <div className="fixed inset-0 flex items-center justify-center p-4">
+      <Dialog.Panel className={`mx-auto max-w-lg rounded p-6 ${
+        isDarkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'
+      }`}>
           <div className="flex justify-between items-center mb-4">
             <Dialog.Title className="text-xl font-bold">
               {disaster.type.charAt(0).toUpperCase() + disaster.type.slice(1)} di {disaster.location.name}

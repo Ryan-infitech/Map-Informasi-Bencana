@@ -1,3 +1,4 @@
+// infomodal.tsx
 import React, { useState, useRef, useEffect } from "react";
 import { Info, X, Github, Mail, Globe, User } from "lucide-react";
 
@@ -60,13 +61,10 @@ const InfoModal = () => {
         <Info className="h-5 w-5 text-gray-600 dark:text-gray-300" />
       </button>
 
-      <div
-        className={`fixed inset-0 z-50 flex items-center justify-center p-4 
-          ${isModalOpen ? "visible" : "invisible"}`}
-      >
-        <div
-          className={`absolute inset-0 bg-black/30 backdrop-blur-md transition-opacity duration-200
-            ${isModalOpen ? "opacity-100" : "opacity-0"}`}
+      <div className={`fixed inset-0 z-40 flex items-center justify-center p-4 
+        ${isModalOpen ? "visible" : "invisible"}`}>
+        <div className={`absolute inset-0 bg-black/30 backdrop-blur-md transition-opacity duration-200
+          ${isModalOpen ? "opacity-100" : "opacity-0"}`}
           onClick={() => setIsModalOpen(false)}
         />
 
