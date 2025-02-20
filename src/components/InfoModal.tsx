@@ -1,6 +1,6 @@
 // infomodal.tsx
 import React, { useState, useRef, useEffect } from "react";
-import { Info, X, Github, Mail, Globe, User } from "lucide-react";
+import { Info, X, Github, Mail, Globe, User, Linkedin } from "lucide-react";
 
 const InfoModal = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -36,9 +36,9 @@ const InfoModal = () => {
       label: "GitHub",
     },
     {
-      icon: Mail,
-      href: "mailto:rianseptiawan@infitech.or.id",
-      label: "Email",
+      icon: Linkedin,
+      href: "https://www.linkedin.com/in/rian-septiawan-23b0a5351/",
+      label: "LinkedIn",
     },
     {
       icon: Globe,
