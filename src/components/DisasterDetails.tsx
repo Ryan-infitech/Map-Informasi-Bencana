@@ -15,7 +15,7 @@ const DisasterDetails = ({ disaster, isOpen, onClose, isDarkMode }: DisasterDeta
   if (!disaster) return null;
 
   const impactData = [
-    { icon: '💔', label: 'Korban Jiwa', value: disaster.affected.casualties, color: 'bg-red-500' },
+    { icon: '💔', label: 'Korban Jiwa', value: disaster.affected.casualties, color: 'bg-gray-100' },
     { icon: '🏃', label: 'Pengungsi', value: disaster.affected.displaced, color: 'bg-blue-500' },
     { icon: '🤕', label: 'Luka-luka', value: disaster.affected.injured, color: 'bg-yellow-500' },
     { icon: '🏛️', label: 'Fasum Rusak', value: disaster.affected.publicFacilitiesDamaged, color: 'bg-purple-500' },
