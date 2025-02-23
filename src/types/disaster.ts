@@ -1,3 +1,4 @@
+// disaster.ts
 export type DisasterType = 
   | 'earthquake'
   | 'flood'
@@ -8,7 +9,6 @@ export type DisasterType =
   | 'drought'
   | 'typhoon'
   | 'other';
-
 
 export interface Disaster {
   id: string;
@@ -25,5 +25,9 @@ export interface Disaster {
     casualties: number;
     displaced: number;
     injured: number;
+    publicFacilitiesDamaged: number;
+    missing: number;
+    housesDamaged: number;
+    housesFlooded: number;
   };
 }
