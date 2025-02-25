@@ -18,56 +18,56 @@ const DisasterDetails = ({
 }: DisasterDetailsProps) => {
   if (!disaster) return null;
 
-  // Data dampak bencana dengan tambahan properti relevantFor
+  // Data dampak bencana relevantFor
   const impactData = [
     {
       icon: "💔",
       label: "Korban Jiwa",
       value: disaster.affected.casualties,
       color: isDarkMode ? "bg-gray-700" : "bg-gray-100",
-      relevantFor: ["all"] // Relevan untuk semua jenis bencana
+      relevantFor: ["all"] 
     },
     {
       icon: "🏃",
       label: "Pengungsi",
       value: disaster.affected.displaced,
       color: isDarkMode ? "bg-blue-900/50" : "bg-blue-100",
-      relevantFor: ["all"] // Relevan untuk semua jenis bencana
+      relevantFor: ["all"] 
     },
     {
       icon: "🤕",
       label: "Luka-luka",
       value: disaster.affected.injured,
       color: isDarkMode ? "bg-yellow-900/50" : "bg-yellow-100",
-      relevantFor: ["all"] // Relevan untuk semua jenis bencana
+      relevantFor: ["all"] 
     },
     {
       icon: "🏛️",
       label: "Fasum Rusak",
       value: disaster.affected.publicFacilitiesDamaged,
       color: isDarkMode ? "bg-purple-900/50" : "bg-purple-100",
-      relevantFor: ["all"] // Relevan untuk semua jenis bencana
+      relevantFor: ["all"] 
     },
     {
       icon: "❓",
       label: "Hilang",
       value: disaster.affected.missing,
       color: isDarkMode ? "bg-gray-700" : "bg-gray-100",
-      relevantFor: ["all"] // Relevan untuk semua jenis bencana
+      relevantFor: ["all"] 
     },
     {
       icon: "🏚️",
       label: "Rumah Rusak",
       value: disaster.affected.housesDamaged,
       color: isDarkMode ? "bg-orange-900/50" : "bg-orange-100",
-      relevantFor: ["all"] // Relevan untuk semua jenis bencana
+      relevantFor: ["all"] 
     },
     {
       icon: "🌊",
       label: "Rumah Terendam",
       value: disaster.affected.housesFlooded,
       color: isDarkMode ? "bg-cyan-900/50" : "bg-cyan-100",
-      relevantFor: ["banjir", "tsunami", "gelombang pasang", "abrasi"] // Hanya relevan untuk bencana air
+      relevantFor: ["banjir", "tsunami", "gelombang pasang", "abrasi"] 
     },
   ];
 
