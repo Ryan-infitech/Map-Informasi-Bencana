@@ -68,7 +68,8 @@ export const fetchDisasters = async (params?: {
       affected: {
         casualties: parseInt(item['Meninggal'] || '0'),
         displaced: parseInt(item['Hilang'] || '0'),
-        injured: parseInt(item['Terluka'] || '0')
+        injured: parseInt(item['Terluka'] || '0'),
+        publicFacilitiesDamaged: parseInt(item['Fasum Rusak'] || '0'),
       }
     }));
 
@@ -83,10 +84,11 @@ function getSeverity(item: any): 'low' | 'medium' | 'high' {
   const casualties = parseInt(item['Meninggal'] || '0');
   const displaced = parseInt(item['Hilang'] || '0');
   const injured = parseInt(item['Terluka'] || '0');
+  const publicFacilitiesDamaged = parseInt(item['Fasum Rusak'] || '0');
   
-  if (casualties > 10 || displaced > 100 || injured > 50) {
+  if (casualties > 10 || displaced > 100 || injured > 50 || publicFacilitiesDamaged > 10) {
     return 'high';
-  } else if (casualties > 0 || displaced > 10 || injured > 10) {
+  } else if (casualties > 0 || displaced > 10 || injured > 10 || publicFacilitiesDamaged > 5) {
     return 'medium';
   }
   return 'low';

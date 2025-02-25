@@ -11,6 +11,7 @@ export type DisasterType =
   | 'other';
 
 export interface Disaster {
+  title:string;
   id: string;
   type: DisasterType;
   location: {
