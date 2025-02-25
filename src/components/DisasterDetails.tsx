@@ -97,7 +97,7 @@ const DisasterDetails = ({
               }`}
             >
               {disaster.type.charAt(0).toUpperCase() + disaster.type.slice(1)}{" "}
-              di {disaster.location.name}
+              di {disaster.location.name} ({disaster.province})
             </Dialog.Title>
             <button
               onClick={onClose}
