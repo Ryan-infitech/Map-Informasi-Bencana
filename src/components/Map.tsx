@@ -202,7 +202,7 @@ const DisasterMap: React.FC<{
           >
             <Popup className={`${isDarkMode ? 'dark-popup' : ''} !w-auto min-w-[200px] max-w-[300px]`}>
               <div className="p-2">
-                <h3 className="font-bold text-lg mb-1 dark:text-white">{disaster.title}</h3>
+              <h3 className="font-bold text-lg mb-1 dark:text-white" style={{ textTransform: 'uppercase' }}>{disaster.type}</h3>
                 <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">{disaster.description}</p>
                 <div className="text-xs text-gray-500 dark:text-gray-400">
                   Lokasi: {disaster.location.name}
