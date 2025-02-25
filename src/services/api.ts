@@ -97,23 +97,23 @@ function getSeverityByDisasterType(item: any): 'low' | 'medium' | 'high' {
   switch (disasterType) {
     case 'gempa bumi':
       if (casualties > 100 || displaced > 50000 || injured > 1000 || publicFacilitiesDamaged > 100 || 
-          missing > 100 || housesDamaged > 10000) {
+          missing > 100 || housesDamaged > 1000) {
         return 'high';
       } else if (casualties > 10 || displaced > 1000 || injured > 100 || publicFacilitiesDamaged > 20 || 
-                missing > 20 || housesDamaged > 1000) {
+                missing > 20 || housesDamaged > 100) {
         return 'medium';
       } else if (casualties > 0 || displaced > 100 || injured > 10 || publicFacilitiesDamaged > 5 || 
-                missing > 5 || housesDamaged > 100) {
+                missing > 5 || housesDamaged > 50) {
         return 'low';
       }
       break;
       
     case 'banjir':
       if (casualties > 50 || displaced > 50000 || injured > 1000 || publicFacilitiesDamaged > 50 || 
-          missing > 50 || housesDamaged > 10000 || housesFlooded > 10000) {
+          missing > 50 || housesDamaged > 10000 || housesFlooded > 3000) {
         return 'high';
-      } else if (casualties > 10 || displaced > 5000 || injured > 100 || publicFacilitiesDamaged > 20 || 
-                missing > 20 || housesDamaged > 1000 || housesFlooded > 1000) {
+      } else if (casualties > 2 || displaced > 5000 || injured > 100 || publicFacilitiesDamaged > 20 || 
+                missing > 20 || housesDamaged > 1000 || housesFlooded > 300) {
         return 'medium';
       } else if (casualties > 0 || displaced > 500 || injured > 10 || publicFacilitiesDamaged > 5 || 
                 missing > 5 || housesDamaged > 100 || housesFlooded > 100) {
@@ -122,10 +122,10 @@ function getSeverityByDisasterType(item: any): 'low' | 'medium' | 'high' {
       break;
       
     case 'tanah longsor':
-      if (casualties > 50 || displaced > 5000 || injured > 1000 || publicFacilitiesDamaged > 20 || 
+      if (casualties > 50 || displaced > 1000 || injured > 200 || publicFacilitiesDamaged > 20 || 
           missing > 20 || housesDamaged > 500) {
         return 'high';
-      } else if (casualties > 10 || displaced > 1000 || injured > 100 || publicFacilitiesDamaged > 10 || 
+      } else if (casualties > 10 || displaced > 500 || injured > 50 || publicFacilitiesDamaged > 10 || 
                 missing > 10 || housesDamaged > 100) {
         return 'medium';
       } else if (casualties > 0 || displaced > 100 || injured > 10 || publicFacilitiesDamaged > 5 || 
@@ -136,7 +136,7 @@ function getSeverityByDisasterType(item: any): 'low' | 'medium' | 'high' {
       
     case 'angin puting beliung':
     case 'angin kencang':
-    case 'tornado':
+    case 'cuaca ekstrem':
       if (casualties > 20 || displaced > 10000 || injured > 500 || publicFacilitiesDamaged > 50 || 
           missing > 10 || housesDamaged > 1000) {
         return 'high';
