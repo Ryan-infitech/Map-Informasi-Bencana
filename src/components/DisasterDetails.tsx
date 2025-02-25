@@ -71,7 +71,7 @@ const DisasterDetails = ({
     },
   ];
 
-  // Filter impact data berdasarkan jenis bencana
+  // Filter impact berdasarkan jenis bencana
   const filteredImpactData = impactData.filter(impact => 
     impact.relevantFor.includes("all") || impact.relevantFor.includes(disaster.type)
   );
