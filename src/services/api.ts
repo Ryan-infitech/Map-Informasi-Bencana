@@ -56,6 +56,7 @@ export const fetchDisasters = async (params?: {
     // Transform DynamoDB items to match Disaster type
     return (response.Items || []).map(item => ({
       id: item['Kode Identitas Bencana'],
+      province: item['Provinsi'],
       type: item['Kejadian'].toLowerCase() as DisasterType,
       location: {
         lat: parseFloat(item['Lat'] || '0'),
