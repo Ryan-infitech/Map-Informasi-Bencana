@@ -14,6 +14,7 @@ export interface Disaster {
   title:string;
   id: string;
   type: DisasterType;
+  province: string;
   location: {
     lat: number;
     lng: number;
