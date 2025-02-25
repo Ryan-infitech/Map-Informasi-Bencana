@@ -1,4 +1,3 @@
-// DisasterDetails.tsx
 import { Dialog } from "@headlessui/react";
 import { format } from "date-fns";
 import { X } from "lucide-react";
@@ -19,50 +18,63 @@ const DisasterDetails = ({
 }: DisasterDetailsProps) => {
   if (!disaster) return null;
 
+  // Data dampak bencana dengan tambahan properti relevantFor
   const impactData = [
     {
       icon: "💔",
       label: "Korban Jiwa",
       value: disaster.affected.casualties,
       color: isDarkMode ? "bg-gray-700" : "bg-gray-100",
+      relevantFor: ["all"] // Relevan untuk semua jenis bencana
     },
     {
       icon: "🏃",
       label: "Pengungsi",
       value: disaster.affected.displaced,
       color: isDarkMode ? "bg-blue-900/50" : "bg-blue-100",
+      relevantFor: ["all"] // Relevan untuk semua jenis bencana
     },
     {
       icon: "🤕",
       label: "Luka-luka",
       value: disaster.affected.injured,
       color: isDarkMode ? "bg-yellow-900/50" : "bg-yellow-100",
+      relevantFor: ["all"] // Relevan untuk semua jenis bencana
     },
     {
       icon: "🏛️",
       label: "Fasum Rusak",
       value: disaster.affected.publicFacilitiesDamaged,
       color: isDarkMode ? "bg-purple-900/50" : "bg-purple-100",
+      relevantFor: ["all"] // Relevan untuk semua jenis bencana
     },
     {
       icon: "❓",
       label: "Hilang",
       value: disaster.affected.missing,
       color: isDarkMode ? "bg-gray-700" : "bg-gray-100",
+      relevantFor: ["all"] // Relevan untuk semua jenis bencana
     },
     {
       icon: "🏚️",
       label: "Rumah Rusak",
       value: disaster.affected.housesDamaged,
       color: isDarkMode ? "bg-orange-900/50" : "bg-orange-100",
+      relevantFor: ["all"] // Relevan untuk semua jenis bencana
     },
     {
       icon: "🌊",
       label: "Rumah Terendam",
       value: disaster.affected.housesFlooded,
       color: isDarkMode ? "bg-cyan-900/50" : "bg-cyan-100",
+      relevantFor: ["banjir", "tsunami", "gelombang pasang", "abrasi"] // Hanya relevan untuk bencana air
     },
   ];
+
+  // Filter impact data berdasarkan jenis bencana
+  const filteredImpactData = impactData.filter(impact => 
+    impact.relevantFor.includes("all") || impact.relevantFor.includes(disaster.type)
+  );
 
   return (
     <Dialog open={isOpen} onClose={onClose} className="relative z-30">
@@ -176,7 +188,7 @@ const DisasterDetails = ({
                 Dampak:
               </p>
               <div className="grid grid-cols-2 gap-2">
-                {impactData.map((impact) => (
+                {filteredImpactData.map((impact) => (
                   <div
                     key={impact.label}
                     className={`flex items-center gap-2 p-2 rounded-lg ${
