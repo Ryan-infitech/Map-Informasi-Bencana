@@ -150,7 +150,7 @@ function getSeverityByDisasterType(item: any): 'low' | 'medium' | 'high' {
       }
       break;
       
-    case 'kebakaran':
+    case 'kebakaran hutan dan lahan':
       if (casualties > 50 || displaced > 10000 || injured > 500 || publicFacilitiesDamaged > 50 || 
           missing > 20 || housesDamaged > 1000) {
         return 'high';
