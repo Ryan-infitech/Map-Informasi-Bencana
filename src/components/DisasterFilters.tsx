@@ -85,7 +85,7 @@ const DisasterFilters = () => {
       icon: <Mountain className="rotate-180" />,
     },
     { id: "cuaca-ekstrem", label: "Cuaca Ekstrem", icon: <CloudLightning /> },
-    { id: "kebakaran", label: "Kebakaran", icon: <FlameKindling /> },
+    { id: "kebakaran hutan dan lahan", label: "kebakaran hutan dan lahan", icon: <FlameKindling /> },
     { id: "tsunami", label: "Tsunami", icon: <AudioWaveform /> },
     { id: "gunung-meletus", label: "Gunung Meletus", icon: <MountainSnow /> },
     { id: "kekeringan", label: "Kekeringan", icon: <ThermometerSun /> },
