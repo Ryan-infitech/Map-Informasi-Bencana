@@ -37,7 +37,7 @@ const InfoModal = () => {
     },
     {
       icon: Linkedin,
-      href: "https://www.linkedin.com/in/rian-septiawan-23b0a5351/",
+      href: "www.linkedin.com/in/rian-septiawan",
       label: "LinkedIn",
     },
     {
